@@ -117,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get values from form
         const username = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
+        console.log("Name:", username);
+        console.log("password:", password);
         // Define payload
         const payload = {
             username: username,
@@ -136,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(text => {
             try {
                 const data = JSON.parse(text); // Attempt to parse JSON
-
+                console.log("data:", data);
                 if (data.success) {
                     // Handle successful login
                     console.log("success:", data);

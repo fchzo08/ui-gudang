@@ -110,55 +110,61 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- JavaScript to handle the API call -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir secara default
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
 
-            // Mendapatkan nilai dari formulir
-            const username = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        // Get values from form
+        const username = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-            // Mendefinisikan payload
-            const payload = {
-                username: username,
-                password: password
-            };
+        // Define payload
+        const payload = {
+            username: username,
+            password: password
+        };
 
-            // Melakukan panggilan API menggunakan fetch
-            fetch('https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        // Menangani login yang berhasil
-                        console.log("susscees: ", data);
-                        window.location.href = '/home'; // Mengarahkan ke halaman dashboard
-                    } else {
-                        // Menampilkan pesan kesalahan
-                        const errorMessageElement = document.getElementById('error-message');
-                        errorMessageElement.textContent = data.message;
-                        errorMessageElement.style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+        // Make API call using fetch
+        fetch('https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.text()) // Get response as text
+        .then(text => {
+            try {
+                const data = JSON.parse(text); // Attempt to parse JSON
+
+                if (data.success) {
+                    // Handle successful login
+                    console.log("success:", data);
+                    window.location.href = '/home'; // Redirect to dashboard
+                } else {
+                    // Display error message
                     const errorMessageElement = document.getElementById('error-message');
-                    errorMessageElement.textContent = 'An error occurred. Please try again.';
+                    errorMessageElement.textContent = data.message || 'Login failed';
                     errorMessageElement.style.display = 'block';
-                });
+                }
+            } catch (e) {
+                // Handle parsing error
+                console.error('Error parsing JSON:', e);
+                console.error('Response text:', text);
+                const errorMessageElement = document.getElementById('error-message');
+                errorMessageElement.textContent = 'An error occurred. Please try again.';
+                errorMessageElement.style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            const errorMessageElement = document.getElementById('error-message');
+            errorMessageElement.textContent = 'An error occurred. Please try again.';
+            errorMessageElement.style.display = 'block';
         });
     });
-    </script>
+});
+</script>
 </body>
 
 </html>

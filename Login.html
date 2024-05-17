@@ -90,7 +90,7 @@
         <div id="error-message" class="alert alert-danger" role="alert" style="display: none;">
             <!-- Error message will be shown here -->
         </div>
-        <form id="loginForm" method="post">
+        <form id="loginForm">
             <div class="form-group">
                 <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
             </div>
@@ -141,6 +141,7 @@
                 .then(data => {
                     if (data.success) {
                         // Menangani login yang berhasil
+                        console.log("susscees: ", data);
                         window.location.href = '/home'; // Mengarahkan ke halaman dashboard
                     } else {
                         // Menampilkan pesan kesalahan

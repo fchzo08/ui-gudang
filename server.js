@@ -9,6 +9,8 @@ app.use(cors({
   origin: '*', 
 }));
 
+app.use(bodyParser.json());
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "Login.html"));
 });

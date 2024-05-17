@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 const data = JSON.parse(text); // Attempt to parse JSON
                 console.log("data:", data);
-                if (data.success) {
+                if (data != null) {
                     // Handle successful login
                     console.log("success:", data);
                     window.location.href = '/home'; // Redirect to dashboard

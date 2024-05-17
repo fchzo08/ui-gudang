@@ -138,15 +138,15 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 const data = JSON.parse(text); // Attempt to parse JSON
                 console.log("data:", data);
-                if (data != null) {
-                    // Handle successful login
-                    console.log("success:", data);
-                    window.location.href = '/home'; // Redirect to dashboard
-                } else {
+                if (Object.keys(data).length === 0) {
                     // Display error message
                     const errorMessageElement = document.getElementById('error-message');
                     errorMessageElement.textContent = data.message || 'Login failed';
                     errorMessageElement.style.display = 'block';
+                } else {
+                    // Handle successful login
+                    console.log("success:", data);
+                    window.location.href = '/home'; // Redirect to dashboard
                 }
             } catch (e) {
                 // Handle parsing error

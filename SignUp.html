@@ -1,146 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up Page</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            body {
+                background-image: url("industrial-background.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 100vh;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Information</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-    body {
-        background-image: url('industrial-background.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
+            .login-container {
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 100%;
+            }
 
-    .navbar {
-        background-color: rgba(255, 111, 97, 0.8);
-        border-color: #ff6f61;
-    }
+            .login-container h2 {
+                text-align: center;
+                margin-bottom: 30px;
+                color: #333;
+            }
 
-    .navbar-brand img {
-        max-height: 40px;
-    }
+            .form-control {
+                border-radius: 20px;
+                margin-bottom: 20px;
+            }
 
-    .navbar-brand,
-    .navbar-nav .nav-link {
-        color: #fff;
-        font-weight: bold;
-    }
+            .btn-login {
+                border-radius: 20px;
+                background-color: #ff6f61;
+                border-color: #ff6f61;
+                color: #fff;
+                font-weight: bold;
+            }
 
-    .navbar-nav .nav-link:hover {
-        color: #ff6f61;
-    }
+            .btn-login:hover {
+                background-color: #d14032;
+                border-color: #d14032;
+            }
 
-    .warehouse-info-container {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
-        width: 90%;
-        margin: auto;
-        margin-top: 50px;
-    }
+            .register-link {
+                text-align: center;
+                color: #666;
+                margin-top: 20px;
+            }
 
-    .warehouse-info-container h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #333;
-    }
+            .register-link a {
+                color: #ff6f61;
+                font-weight: bold;
+            }
 
-    .info-text {
-        color: #666;
-        margin-bottom: 20px;
-    }
+            .register-link a:hover {
+                color: #d14032;
+                text-decoration: none;
+            }
 
-    .warehouse-image {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+            .brand-logo {
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
-    .warehouse-image img {
-        width: 70%;
-        max-width: 400px;
-        border-radius: 10px;
-    }
+            .brand-logo img {
+                width: 150px;
+            }
+        </style>
+    </head>
 
-    .contact-info {
-        text-align: center;
-        margin-top: 30px;
-    }
-
-    .contact-info p {
-        color: #666;
-        margin-bottom: 5px;
-    }
-    </style>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="logoIndustri.png" alt="Warehouse Logo" style="width: 45px; height: 45px;">
-                <a class="navbar-brand" href="#">Warehouse Management</a>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Home.php">Info Gudang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="FormPeminjam.php">Penyewaan Gudang</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Profile.php">List User</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Edit.php">Edit User</a>
-                    </li>
-                </ul>
+    <body>
+        <div class="login-container">
+            <div class="brand-logo">
+                <img src="logoIndustri.png" alt="Industrial Logo" />
             </div>
-        </div>
-    </nav>
-
-    <!-- Warehouse Information -->
-    <div class="container">
-        <div class="warehouse-info-container">
-            <h2>Informasi Gudang</h2>
-            <div class="warehouse-image">
-                <img src="fotogudang.jpg" alt="Warehouse Image" style="width: 30cm; height: 5cm;">
-            </div>
-            <div class="info-text">
-                <p>Gudang XYZ adalah gudang yang berlokasi di kawasan industri Utama. Gudang ini memiliki luas area
-                    sekitar 1000 meter persegi dan dilengkapi dengan sistem pengamanan terbaru.</p>
-                <p>Untuk informasi lebih lanjut, silakan hubungi kami di:</p>
-            </div>
-
-
-            <div class="container">
-                <div class="warehouse-select" style="margin-top: 7ch;">
-                    <a href="InfoRow.php"><button type="button" class="btn btn-primary" id="select-warehouse-btn">List
-                            Data Penyewa</button></a>
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" required />
                 </div>
-            </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-login">Sign Up</button>
+            </form>
+            <div class="register-link">Have an account? <a href="Login.php">Login Here</a></div>
         </div>
-    </div>
 
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+        <!-- Custom JavaScript -->
+        <script>
+            document.getElementById("signup-form").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the form from submitting the default way
 
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                const data = {
+                    email: email,
+                    password: password,
+                };
+
+                fetch("https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("Success:", data);
+                        // You can add code here to handle a successful signup (e.g., redirect to login page, display a success message, etc.)
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        // You can add code here to handle errors (e.g., display an error message)
+                    });
+            });
+        </script>
+    </body>
 </html>

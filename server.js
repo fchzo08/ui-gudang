@@ -25,7 +25,7 @@ app.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "SignUp.html"));
 });
 
-app.get("/allGudang", (req, res) => {
+app.get("/gudang", (req, res) => {
   res.sendFile(path.join(__dirname, "InfoRow.html"));
 });
 

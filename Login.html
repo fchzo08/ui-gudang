@@ -137,14 +137,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(text => {
             try {
                 const data = JSON.parse(text); // Attempt to parse JSON
-                console.log("data:", data);
                 if (Object.keys(data).length === 0) {
                     // Display error message
                     const errorMessageElement = document.getElementById('error-message');
                     errorMessageElement.textContent = data.message || 'Login failed';
                     errorMessageElement.style.display = 'block';
                 } else {
-                    console.log("success:", data);
+                    console.log("success tkn:", data.token);
+                    console.log("success id:", data.id_user);
                     if (data.token && data.id_user) {
                         // Save token and user ID to session storage
                         sessionStorage.setItem('token', data.token);

@@ -92,7 +92,7 @@
         </div>
         <form id="loginForm">
             <div class="form-group">
-                <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password">
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Prevent default form submission
 
         // Get values from form
-        const username = document.getElementById('email').value;
+        const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         console.log("Name:", username);
         console.log("password:", password);
@@ -144,9 +144,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorMessageElement.textContent = data.message || 'Login failed';
                     errorMessageElement.style.display = 'block';
                 } else {
-                    // Handle successful login
                     console.log("success:", data);
-                    window.location.href = '/home'; // Redirect to dashboard
+                    if (data.token && data.id_user) {
+                        // Save token and user ID to session storage
+                        sessionStorage.setItem('token', data.token);
+                        sessionStorage.setItem('id_user', data.id_user);
+                        // Redirect to dashboard
+                        window.location.href = '/home';
+                    } else {
+                        const errorMessageElement = document.getElementById('error-message');
+                        errorMessageElement.textContent = 'Token or user ID not received. Login failed.';
+                        errorMessageElement.style.display = 'block';
+                    }
                 }
             } catch (e) {
                 // Handle parsing error

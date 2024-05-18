@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Save token and user ID to session storage
                         sessionStorage.setItem('token', data.token);
                         // Redirect to dashboard
-                        window.location.href = '/home';
+                        window.location.href = '/';
                     } else {
                         const errorMessageElement = document.getElementById('error-message');
                         errorMessageElement.textContent = 'Token or user ID not received. Login failed.';

@@ -88,7 +88,7 @@
             <h2>Sign Up</h2>
             <form id="signup-form">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="email" placeholder="Enter email" required />
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" required />
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" placeholder="Password" required />
@@ -108,7 +108,7 @@
             document.getElementById("signup-form").addEventListener("submit", function (event) {
                 event.preventDefault(); // Prevent the form from submitting the default way
 
-                const username = document.getElementById("email").value;
+                const username = document.getElementById("username").value;
                 const password = document.getElementById("password").value;
 
                 const data = {
@@ -126,12 +126,10 @@
                     .then((response) => response.json())
                     .then((data) => {
                         console.log("Success:", data);
-                        window.location.href='login.html';
-                        // You can add code here to handle a successful signup (e.g., redirect to login page, display a success message, etc.)
+                        window.location.href='/';
                     })
                     .catch((error) => {
                         console.error("Error:", error);
-                        // You can add code here to handle errors (e.g., display an error message)
                     });
             });
         </script>

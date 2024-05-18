@@ -95,7 +95,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block btn-login">Sign Up</button>
             </form>
-            <div class="register-link">Have an account? <a href="/">Login Here</a></div>
+            <div class="register-link">Have an account? <a href="/login">Login Here</a></div>
         </div>
 
         <!-- Bootstrap JS -->
@@ -126,7 +126,7 @@
                     .then((response) => response.json())
                     .then((data) => {
                         console.log("Success:", data);
-                        window.location.href='/';
+                        window.location.href='/login';
                     })
                     .catch((error) => {
                         console.error("Error:", error);

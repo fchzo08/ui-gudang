@@ -13,11 +13,11 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "Login.html"));
 });
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
   });
 

@@ -144,11 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorMessageElement.style.display = 'block';
                 } else {
                     console.log("success tkn:", data.token);
-                    console.log("success id:", data.id_user);
-                    if (data.token && data.id_user) {
+                    if (data.token) {
                         // Save token and user ID to session storage
                         sessionStorage.setItem('token', data.token);
-                        sessionStorage.setItem('id_user', data.id_user);
                         // Redirect to dashboard
                         window.location.href = '/home';
                     } else {

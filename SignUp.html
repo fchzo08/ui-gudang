@@ -102,6 +102,8 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Axios JS -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <!-- Custom JavaScript -->
         <script>
@@ -116,20 +118,14 @@
                     password: password,
                 };
 
-                fetch("https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/register", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log("Success:", data);
-                        window.location.href='/login';
+                axios.post("https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/register", data)
+                    .then((response) => {
+                        console.log("Success:", response.data);
+                        window.location.href = '/login';
                     })
                     .catch((error) => {
                         console.error("Error:", error);
+                        alert("An error occurred during signup: " + error.message);
                     });
             });
         </script>

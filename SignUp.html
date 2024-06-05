@@ -120,12 +120,16 @@
 
                 axios.post("https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/register", data)
                     .then((response) => {
-                        console.log("Success:", response.data);
-                        window.location.href = '/login';
+                        if (response.data.message) {
+                            alert(response.data.message);
+                        } else {
+                            alert("Signup successful!");
+                            window.location.href = '/login';
+                        }
                     })
                     .catch((error) => {
                         console.error("Error:", error);
-                        alert("An error occurred during signup: " + error.message);
+                        alert(error.message);
                     });
             });
         </script>

@@ -1,158 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Warehouse Information</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            body {
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Information</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-    body {
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
+            .navbar {
+                background-color: rgba(255, 111, 97, 0.8);
+                border-color: #ff6f61;
+            }
 
-    .navbar {
-        background-color: rgba(255, 111, 97, 0.8);
-        border-color: #ff6f61;
-    }
+            .navbar-brand img {
+                max-height: 40px;
+            }
 
-    .navbar-brand img {
-        max-height: 40px;
-    }
+            .navbar-brand,
+            .navbar-nav .nav-link {
+                color: #fff;
+                font-weight: bold;
+            }
 
-    .navbar-brand,
-    .navbar-nav .nav-link {
-        color: #fff;
-        font-weight: bold;
-    }
+            .navbar-nav .nav-link:hover {
+                color: #ff6f61;
+            }
 
-    .navbar-nav .nav-link:hover {
-        color: #ff6f61;
-    }
+            .warehouse-info-container {
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+                max-width: 800px;
+                width: 90%;
+                margin: auto;
+                margin-top: 50px;
+            }
 
-    .warehouse-info-container {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
-        width: 90%;
-        margin: auto;
-        margin-top: 50px;
-    }
+            .warehouse-info-container h2 {
+                text-align: center;
+                margin-bottom: 30px;
+                color: #333;
+            }
 
-    .warehouse-info-container h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #333;
-    }
+            .info-text {
+                color: #666;
+                margin-bottom: 20px;
+                text-align: center;
+            }
 
-    .info-text {
-        color: #666;
-        margin-bottom: 20px;
-    }
+            .warehouse-image {
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
-    .warehouse-image {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+            .warehouse-image img {
+                width: 70%;
+                max-width: 400px;
+                border-radius: 10px;
+            }
 
-    .warehouse-image img {
-        width: 70%;
-        max-width: 400px;
-        border-radius: 10px;
-    }
+            .contact-info {
+                text-align: center;
+                margin-top: 30px;
+            }
 
-    .contact-info {
-        text-align: center;
-        margin-top: 30px;
-    }
+            .contact-info p {
+                color: #666;
+                margin-bottom: 5px;
+            }
+        </style>
 
-    .contact-info p {
-        color: #666;
-        margin-bottom: 5px;
-    }
-    </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const token = sessionStorage.getItem("token");
+                if (!token) {
+                    window.location.href = "/login";
+                } else {
+                    console.log("Token found:", token);
+                }
+            });
+        </script>
+    </head>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const token = sessionStorage.getItem('token');
-        if (!token) {
-            window.location.href = '/login';
-        } else {
-            console.log('Token found:', token);
-        }
-    });
-</script>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="/logo" alt="Warehouse Logo" style="width: 45px; height: 45px;">
-                <a class="navbar-brand" href="#">Warehouse Management</a>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Info Gudang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sewa">Penyewaan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gudang">Gudang</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/profile">List User</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" id="logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="warehouse-info-container">
-            <h2>Informasi Gudang</h2>
-            <div class="warehouse-image">
-                <img src="/logo" alt="Warehouse Image" style="width: 30cm; height: 5cm;">
-            </div>
-            <div class="info-text">
-                <p>
-Selamat datang di Penyewaan Gudang, penyedia solusi penyewaan gudang terbaik untuk kebutuhan bisnis Anda.\n Dengan lokasi strategis, fasilitas lengkap, dan sistem keamanan 24/7, kami menjamin penyimpanan yang aman \n dan efisien untuk berbagai jenis barang. Layanan kami mencakup penyewaan gudang dengan berbagai ukuran,\n manajemen inventaris canggih, serta dukungan distribusi dan logistik. Tim profesional kami siap membantu \n Anda mengelola penyimpanan dengan optimal dan fleksibel, memastikan operasional bisnis Anda berjalan lancar. \n Hubungi kami sekarang untuk informasi lebih lanjut dan kunjungi fasilitas kami untuk melihat sendiri keunggulan layanan kami.</p>
-            </div>
-
-
+    <body>
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <div class="warehouse-select" style="margin-top: 7ch;">
-                    <a href="/sewa"><button type="button" class="btn btn-primary" id="select-warehouse-btn">List
-                            Data Penyewa</button></a>
+                <a class="navbar-brand" href="#">
+                    <img src="/logo" alt="Warehouse Logo" style="width: 45px; height: 45px" />
+                    <span class="navbar-brand">Warehouse Management</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Info Gudang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sewa">Penyewaan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/gudang">Gudang</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/profile">List User</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" id="logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="warehouse-info-container">
+                <h2>Informasi Gudang</h2>
+                <div class="warehouse-image">
+                    <img src="/logo" alt="Warehouse Image" style="width: 30cm; height: 5cm" />
+                </div>
+                <div class="info-text">
+                    <p>
+                        Selamat datang di [Nama Perusahaan], penyedia solusi penyewaan gudang terbaik untuk kebutuhan bisnis Anda. Dengan lokasi strategis, fasilitas lengkap, dan sistem keamanan 24/7, kami menjamin penyimpanan yang aman dan
+                        efisien untuk berbagai jenis barang. Layanan kami mencakup penyewaan gudang dengan berbagai ukuran, manajemen inventaris canggih, serta dukungan distribusi dan logistik. Tim profesional kami siap membantu Anda
+                        mengelola penyimpanan dengan optimal dan fleksibel, memastikan operasional bisnis Anda berjalan lancar. Hubungi kami sekarang untuk informasi lebih lanjut dan kunjungi fasilitas kami untuk melihat sendiri keunggulan
+                        layanan kami.
+                    </p>
+                </div>
+                <div class="container">
+                    <div class="warehouse-select" style="margin-top: 7ch">
+                        <a href="/sewa"><button type="button" class="btn btn-primary" id="select-warehouse-btn">List Data Penyewa</button></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('logout').addEventListener('click', function(event) {
-                event.preventDefault(); 
-                sessionStorage.removeItem('token');
-                window.location.href = '/login';
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("logout").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    sessionStorage.removeItem("token");
+                    window.location.href = "/login";
+                });
             });
-        });
         </script>
-</body>
-
+    </body>
 </html>

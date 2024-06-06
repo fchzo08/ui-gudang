@@ -121,7 +121,7 @@
                 axios.post("https://crud-gudang-dot-f-03-415104.et.r.appspot.com/db/register", data)
                     .then((response) => {
                         alert(response.data.message);
-                        if (response.data.message === "Signup successful") {
+                        if (response.data.message === "Registered successfully") {
                             window.location.href = '/login';
                         }
                     })
